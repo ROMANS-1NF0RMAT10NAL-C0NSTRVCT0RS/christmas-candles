@@ -1,0 +1,8 @@
+#!/bin/bash
+start_year=`echo $2 | cut -d - -f 1`
+start_month=$((`echo $2 | cut -d - -f 2`-1))
+start_day=`echo $2 | cut -d - -f 3`
+end_year=`echo $3 | cut -d - -f 1`
+end_month=$((`echo $3 | cut -d - -f 2`-1))
+end_day=`echo $3 | cut -d - -f 3`
+wget -O - "http://ichart.finance.yahoo.com/table.csv?s=$1&d=$end_month&e=$end_day&f=$end_year&g=d&a=$start_month&b=$start_day&c=$start_year&ignore=.csv" | tail -n +2
