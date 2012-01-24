@@ -1,11 +1,11 @@
 CFLAGS=-Wall
-LDFLAGS=
-TARGETS=christmas-candles
+TARGETS=adjust-yahoo-ohlc christmas-candles
 
 all: $(TARGETS)
 clean:; rm $(TARGETS)
 
-#%.c: %.pgc; ecpg $<
+adjust-yahoo-ohlc: adjust-yahoo-ohlc.c
+	cc $(CFLAGS) -o $@ $<
 
 christmas-candles: christmas-candles.c
-	cc $(CFLAGS) $(LDFLAGS) -ldie -lX11 -o $@ $<
+	cc $(CFLAGS) -lX11 -ldie -lm -o $@ $<
